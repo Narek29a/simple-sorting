@@ -1,0 +1,38 @@
+
+<input type="number" #input (change)="setNumbers(input.value); input.value=''" autofocus >
+
+<button *ngIf="validSize" (click)="sort()">send</button>
+
+
+<table *ngIf="isSend">
+  <tr>
+    <th>
+      bubble sorting O(N 2)
+      <ul *ngFor="let b of bubble">
+        <li>
+          {{b}}
+        </li>
+      </ul>
+
+    </th>
+    <th>
+      selection sorting O(N 2)
+      <ul *ngFor="let s of selection">
+        <li>
+          {{s}}
+        </li>
+      </ul>
+
+    </th>
+    <th>
+      insertion sorting O(N 2)
+      <ul *ngFor="let i of insertion">
+        <li>
+          {{i}}
+        </li>
+      </ul>
+    </th>
+  </tr>
+
+</table>
+
