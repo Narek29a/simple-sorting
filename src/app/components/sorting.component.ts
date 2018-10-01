@@ -36,15 +36,12 @@ export class SortingComponent {
     this.isSend = true;
     this.httpClient.post('http://localhost:8080/bubble/', {"numbers": this.numbers}).subscribe((data: any) => {
       this.bubble = data;
-      console.log(this.bubble);
     });
     this.httpClient.post('http://localhost:8080/selection/', {"numbers": this.numbers}).subscribe((data: any) => {
       this.selection = data;
-      console.log(this.selection);
     });
     this.httpClient.post('http://localhost:8080/insertion/', {"numbers": this.numbers}).subscribe((data: any) => {
       this.insertion = data;
-      console.log(this.insertion);
     });
 
 
