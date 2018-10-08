@@ -1,0 +1,13 @@
+{
+  "bubble-url":"http://localhost:8080/bubble/",
+  "selection-url":"http://localhost:8080/selection/",
+  "insertion-url": "http://localhost:8080/insertion/",
+  "merge-url": "http://localhost:8080/merge/",
+  "quick-url": "http://localhost:8080/quick/",
+  "bubble-time": "http://localhost:8080/bubbleTime/",
+  "selection-time": "http://localhost:8080/selectionTime/",
+  "insertion-time": "http://localhost:8080/insertionTime/",
+  "merge-time": "http://localhost:8080/mergeTime/",
+  "quick-time": "http://localhost:8080/quickTime/"
+
+}

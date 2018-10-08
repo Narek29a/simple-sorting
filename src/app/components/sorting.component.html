@@ -1,14 +1,15 @@
 
-<input type="number" #input (change)="setNumbers(input.value); input.value=''" autofocus >
+<input type="number" #input (input)="setNumbers(input.value)"  autofocus >
 
-<button *ngIf="validSize" (click)="sort()">send</button>
+<button *ngIf="inputIsValid" (click)="sort(input.value)">send</button>
 
 
 <table *ngIf="isSend">
   <tr>
     <th>
       bubble sorting O(N 2)
-      <ul *ngFor="let b of bubble">
+      <p> soring time {{performance['bubbleTime']}} (ns)</p>
+      <ul *ngFor="let b of sortedArray['bubble']">
         <li>
           {{b}}
         </li>
@@ -17,7 +18,8 @@
     </th>
     <th>
       selection sorting O(N 2)
-      <ul *ngFor="let s of selection">
+      <p>soring time {{performance['selectionTime']}} (ns)</p>
+      <ul *ngFor="let s of sortedArray['selection']">
         <li>
           {{s}}
         </li>
@@ -26,13 +28,39 @@
     </th>
     <th>
       insertion sorting O(N 2)
-      <ul *ngFor="let i of insertion">
+      <p> soring time {{performance['insertionTime']}} (ns)</p>
+      <ul *ngFor="let i of sortedArray['insertion']">
         <li>
           {{i}}
         </li>
       </ul>
     </th>
+
+    <th>
+      merge sorting O(N * logN)
+      <p> soring time {{performance['mergeTime']}} (ns)</p>
+      <ul *ngFor="let m of sortedArray['merge']">
+        <li>
+          {{m}}
+        </li>
+      </ul>
+    </th>
+
+    <th>
+      quick sorting O(N * logN)
+      <p> soring time {{performance['quickTime']}} (ns)</p>
+      <ul *ngFor="let q of sortedArray['quick']">
+        <li>
+          {{q}}
+        </li>
+      </ul>
+    </th>
+
+
+
+
   </tr>
 
 </table>
+
 

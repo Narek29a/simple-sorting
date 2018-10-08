@@ -5,8 +5,17 @@ table {
 
 }
 
+th {
+  padding-left: 185px;
+}
+
 li {
   list-style-type: none;
   padding-right: 50px;
 }
+
+p {
+  color: green;
+}
+
 

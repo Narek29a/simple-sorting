@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {SortingService} from '../services/sorting.service';
+import {PropertyServiceService} from '../services/propertyService.service';
 
 
 @Component({
@@ -12,39 +13,37 @@ import {HttpClient} from '@angular/common/http';
 
 export class SortingComponent {
 
-  public numbers: Array<number> = [];
-  public validSize: boolean;
+  public inputIsValid: boolean;
   public isSend: boolean;
-  public bubble: Array<number> = [];
-  public selection: Array<number> = [];
-  public insertion: Array<number> = [];
+  public sortedArray: Array<number>;
+  public performance: Array<number>;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private sortingService: SortingService) {
+
 
   }
+
 
 
   public setNumbers(newValue) {
-    this.numbers.push(newValue);
-    if (this.numbers.length == 2) {
-      this.validSize = true;
+    if (newValue > 1) {
+      this.inputIsValid = true;
     }
+    if (newValue == '') {
+      this.inputIsValid = false;
+    }
+
   }
 
 
-  public sort() {
+
+
+ public sort(arraySize) {
     this.isSend = true;
-    this.httpClient.post('http://localhost:8080/bubble/', {"numbers": this.numbers}).subscribe((data: any) => {
-      this.bubble = data;
-    });
-    this.httpClient.post('http://localhost:8080/selection/', {"numbers": this.numbers}).subscribe((data: any) => {
-      this.selection = data;
-    });
-    this.httpClient.post('http://localhost:8080/insertion/', {"numbers": this.numbers}).subscribe((data: any) => {
-      this.insertion = data;
-    });
-
-
+    this.sortedArray = this.sortingService.sort(arraySize);
+    this.performance = this.sortingService.getPerformance();
+    console.log(this.sortedArray);
+    console.log(this.performance)
   }
 
 
